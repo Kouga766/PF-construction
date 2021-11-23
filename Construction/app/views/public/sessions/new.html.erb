@@ -1,0 +1,31 @@
+<div class='container'>
+  <h2>ログイン</h2>
+  <h4>コンストラクション会員の方はこちらからログイン</h4>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field">
+      <%= f.label 'メールアドレス' %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="field">
+      <%= f.label 'パスワード' %><br />
+      <%= f.password_field :password, autocomplete: "current-password" %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="field">
+
+      </div>
+    <% end %>
+
+
+    <div class="actions mb-4 mt-4">
+      <%= f.submit "ログイン",class: "btn btn-outline-success" %>
+    </div>
+    <h4>会員登録がお済みでない方</h4>
+    <div>
+    　<%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください。
+    </div>
+  <% end %>
+</div>

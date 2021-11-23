@@ -1,0 +1,30 @@
+ja:
+  activerecord:
+    models:
+      # view側： User.model_name.human => "ユーザ" / t("activerecord.models.user")と同じ
+      customer: ユーザー
+      board: 掲示板
+      item: プラモデル
+    # model毎に定義したいattributesを記述
+    attributes:
+        customer:
+          id: ID
+          # view側： attribute_name :name => "名前" /　t("activerecord.attributes.user.name")と同じ
+          name: ユーザーネーム
+          email: メールアドレス
+          file: プロフィール画像
+          crypted_password: パスワード
+        item:
+          id: ID
+          name: プラモデル名
+          description: プラモデル説明
+          image: プラモデル画像
+          genre: ジャンル
+        question:
+          name: 質問タイトル
+          question: 内容
+
+  # 全てのmodelで共通して使用するattributesを定義
+  attributes:
+    created_at: 作成日
+    updated_at: 更新日
