@@ -1,4 +1,4 @@
-lass Public::CustomersController < ApplicationController
+class Public::CustomersController < ApplicationController
   def show
     @customer = Customer.find_by(id: current_customer.id)
   end
@@ -9,7 +9,7 @@ lass Public::CustomersController < ApplicationController
   def withdraw
     current_customer.update(is_deleted: "退会")
     reset_session
-    redirect_to public_root_path
+    redirect_to root_path
   end
 
   def edit
@@ -29,6 +29,6 @@ lass Public::CustomersController < ApplicationController
   private
   # ストロングパラメータ
   def customer_params
-   params.require(:customer).permit(:name,  :email )
+   params.require(:customer).permit(:name, :email)
   end
 end

@@ -1,0 +1,64 @@
+<div class='container'>
+  <div class='row'>
+    <font color="red">
+      <% if @review.errors.any? %>
+      <%= @review.errors.count %>error prohibited this obj from being saved:
+      <% @review.errors.full_messages.each do |message| %>
+      <%= message %>
+      <% end %>
+      <% end %>
+    </font>
+
+
+
+    <div class='container'>
+      <div class='row'>
+
+        <div class='container px-3 px-sm-3'>
+          <h4 style="background-color: #d3d3d3; display:inline;">～レビュー～</h4>
+        </div>
+
+        <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+
+          <table width="500" height="500">
+          <%= form_with model: @review, url: public_item_reviews_path(@item), local: true do |f| %>
+            <%= f.hidden_field :item_id, :value => @item.id %>
+
+
+          <tr>
+            <th>レビュー画像</th>
+
+            <th><%= f.attachment_field :image, class: "form-control-file review_image" %></th>
+          </tr>
+
+
+
+          <tr>
+            <th>レビュータイトル</th>
+
+            <th><%= f.text_field :name, size: "40x20",placeholder: "（例）つくりやすい！" %></th>
+          </tr>
+
+
+
+          <tr>
+            <th>内容</th>
+
+            <th><%= f.text_area :comment, size: "45x10",placeholder: "（例）とても簡単に作れて、初心者にお勧めです。" %></th>
+          </tr>
+
+          <tr>
+            <td>
+            <%= f.submit '新規登録', class: "btn btn-success" %>
+            <% end %>
+            </td>
+          </tr>
+
+          </table>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

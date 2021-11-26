@@ -1,3 +1,12 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.main {
+  background-image: image-url("top.png");
+  background-repeat: no-repeat;
+  background-position: relative;
+   background-size: contain;                 /* 画像のサイズを指定    */
+   width: 100%;                              /* 横幅のサイズを指定    */
+   min-height: 70vh;                          /* 縦幅のサイズを指定    */
+}

@@ -1,7 +1,17 @@
 {
+    "ace": {
+        "@tabSize": 2,
+        "@useSoftTabs": true
+    },
     "extensions": {
         "@aws.profile": "profile:default",
         "@json.schemas": []
+    },
+    "general": {
+        "@stripws": true
+    },
+    "instance": {
+        "@automaticShutdown": "30"
     },
     "language": {
         "tern_defs": {

@@ -7,10 +7,12 @@ class Public::QuestionsController < ApplicationController
 
   def technology
    @questions = Question.where(is_Q: true).page(params[:page]).per(PER)
+   @answer = Answer.all
   end
 
   def other
    @questions = Question.where(is_Q: false).page(params[:page]).per(PER)
+   @answer = Answer.all
   end
 
   def show

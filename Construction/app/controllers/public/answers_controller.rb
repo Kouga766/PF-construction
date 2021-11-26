@@ -1,9 +1,5 @@
 class Public::AnswersController < ApplicationController
 
-  def index
-
-  end
-
   def new
     @question = Question.find(params[:question_id])
     @answer = Answer.new
@@ -31,14 +27,16 @@ class Public::AnswersController < ApplicationController
   end
 
   def edit
-
+    @question = Question.find(params[:question_id])
     @answer = Answer.find(params[:id])
     @answers = Answer.all
 
   end
 
   def update
-     @answer = Answer.find(params[:id])
+    @question = Question.find(params[:answer][:question_id])
+    @answer = Answer.find(params[:id])
+    @answer.question_id = @question.id
 
     if @answer.update(answer_params)
       flash[:createdflag] = true

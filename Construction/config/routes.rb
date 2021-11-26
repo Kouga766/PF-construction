@@ -17,9 +17,9 @@ root to: 'public/homes#top'
   # adminのrouting
   namespace :admin do
 
-    # HomesController関連
-    root to: "homes#top"
-    # /HomesController関連
+    # adminログイン後遷移先
+    root to: "items#index"
+    # /adminログイン後遷移先
 
     # ItemsController関連
     resources :items
@@ -29,6 +29,9 @@ root to: 'public/homes#top'
     resources :genres, except: [:new, :show, :destroy]
     # /GenresController関連
 
+     # CustomersController関連
+    resources :customers, except: [:new, :create, :destroy]
+    # /CustomersController関連
   end
   #/adminのrouting
 
@@ -37,28 +40,36 @@ root to: 'public/homes#top'
   namespace :public do
 
     # HomesController関連
+    root to: "homes#top"
     get  "/about" => "homes#about"
     # /HomesController関連
 
     # ItemsController関連
-    resources :items
+    resources :items do
+      resources :reviews
+    end
     get 'public/items/animation' => "items#animation"
     get 'public/items/real' => "items#real"
     # /ItemsController関連
 
     # questionsController関連
-    resources :questions
+    resources :questions do
+      resources :answers
+    end
     get 'public/questions/technology' => "questions#technology"
     get 'public/questions/other' => "questions#other"
     # /questionsController関連
-
-    # answersController関連
-    resources :answers
-    # answersController関連
 
 
     # calendarscontroller関連
     resources :calendars
     # calendarscontroller関連
+
+    # CustomersController関連
+    resource :customers, only: [:show, :edit, :update]
+    get   "customers/cancel"   => "customers#cancel",   as: "customer_cancel"
+    patch "customers/cancel"   => "customers#withdraw", as: "customer_withdraw"
+    # /CustomersController関連
+
   end
 end

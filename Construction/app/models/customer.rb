@@ -5,8 +5,8 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   #　アソシエーション
-  has_many :review, dependent: :destroy
-  has_many :question, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  has_many :questions, dependent: :destroy
   has_many :answers, dependent: :destroy
   #　アソシエーション
 

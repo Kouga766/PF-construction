@@ -1,0 +1,66 @@
+<div class='container'>
+ <div class='row'>
+    <% if @customer.errors.any? %>
+    <%= @customer.errors.count %>error prohibited this obj from being saved:
+    <% @customer.errors.full_messages.each do |message| %>
+    <%= message %>
+    <% end %>
+    <% end %>
+
+
+    <div class='container px-3 px-sm-3'>
+      <h4 style="background-color: #d3d3d3; display:inline;">　会員情報編　</h4>
+    </div>
+
+    <table>
+      <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 ">
+
+        <%= form_with model: @customer, url: admin_customer_path(@customer.id), local:true do |f| %>
+
+        <tr><th>　</th></tr>
+
+        <tr>
+          <th>会員ID</th>
+          <th>　　</th>
+          <th><%= @customer.id%></th>
+        </tr>
+
+        <tr><th>　</th></tr>
+
+        <tr>
+          <th>ユーザー名</th>
+          <th>　　</th>
+          <th><%= f.text_field :name, placeholder: "ユーザー名" %></th>
+        </tr>
+
+        <tr><th>　</th></tr>
+
+         <tr>
+          <th>メールアドレス</th>
+          <th>　　</th>
+          <th><%= f.email_field :email, placeholder: "メールアドレス" %></th>
+        </tr>
+
+        <tr><th>　</th></tr>
+
+        <tr>
+          <th>会員ステータス</th>
+          <th>　　</th>
+          <th>
+            <%= f.radio_button :is_deleted, :有効, checked: "checked" %>
+            <%= f.label :有効, class: "is_deleted_label" %>
+            <%= f.radio_button :is_deleted, :退会 %>
+            <%= f.label :退会, class: "is_deleted_label" %>
+          </th>
+        </tr>
+      </div>
+    </table>
+
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <br></br>
+      <!--改行用-->
+      <%= f.submit '変更を保存', class: "btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -10,7 +10,7 @@ class Item < ApplicationRecord
 
   #　アソシエーション
   belongs_to :genre
-  has_many :review, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   #　アソシエーション
 
 

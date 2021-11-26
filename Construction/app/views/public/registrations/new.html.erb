@@ -1,6 +1,6 @@
 <div class='container'>
 
-  <h2>新規会員登録</h2>
+  <h2>コンストラクション会員登録</h2>
 
   <%= form_with model: @customer, url: customer_registration_path, local: true do |f| %>
     <%= render "public/shared/error_messages", resource: resource %>
@@ -28,13 +28,15 @@
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
 
-    <div class="actions">
+    <div class="actions mt-4">
       <%= f.submit "新規会員登録",class: "btn btn-outline-success" %>
     </div>
 
-     <h4>会員登録がお済みでない方</h4>
+    <br>
+
+     <h4>会員登録がお済みの方</h4>
     <div>
-    　<%= link_to "こちら", new_customer_session_path %>から新規登録を行ってください。
+    　<%= link_to "こちら", new_customer_session_path %>からログインを行ってください。
     </div>
   <% end %>
 

@@ -1,0 +1,62 @@
+<div class='container px-5 px-sm-0'>
+
+  <br>
+  <h2 style="background-color: #d3d3d3; display:inline;">会員詳細</h2>
+  </br>
+
+  <br> </br>
+
+    <div class='row'>
+      <div class='col-md-3'>
+      </div>
+
+      <div class='col-md-8 offset-md-1'>
+
+        <% if flash[:createdflag] == true then %>
+        <p>You have created customer successfully.</p>
+        <% end %>
+
+        <table>
+          <%= form_with model: @customer, url: admin_customers_path, local:true do |f| %>
+
+            <tr>
+              <th>会員ID</th>
+              <th>　　</th>
+              <th><%= @customer.id%></th>
+            </tr>
+
+            <tr><th>　</th></tr>
+
+            <tr>
+              <th>ユーザー名</th>
+              <th>　　</th>
+              <th><%= @customer.name %></th>
+            </tr>
+
+            <tr><th>　</th></tr>
+
+            <tr>
+              <th>会員ステータス</th>
+              <th>　　</th>
+
+                <%= f.hidden_field :is_deleted %>
+                　<% if @customer.is_deleted == "退会" %>
+                    <th class="text-secondary">
+                    <%= @customer.is_deleted %>
+                    </th>
+                  <% else %>
+                    <th class="text-success">
+                  <%= @customer.is_deleted %>
+                    </th>
+                  <% end %>
+
+            </tr>
+
+          <%end%>
+        </table>
+        <br> </br>
+       <td><%= link_to "　編集する　", edit_admin_customer_path(@customer.id), data: {"turbolinks" => false},class: "btn btn-sm btn-success" %></td>
+
+      </div>
+    </div>
+</div>

@@ -30,21 +30,20 @@
                   <li>
                    <th>ようこそ、<%= current_customer.name %>さん！</th>
                   </li>
-
-                 <li>
-                    <%= link_to "新作カレンダー", public_calendars_path, class: "btn btn-outline-dark" %>
+                  <li>
+                    <%= link_to image_tag("calendar.png", class:"image_switch", :size =>'120x50'), public_calendars_path, data: {"turbolinks" => false}%>
                   </li>
                   <li>
-                    <%= link_to "質問箱", public_questions_path, class: "btn btn-outline-dark" %>
+                    <%= link_to image_tag("question.png", class:"image_switch", :size =>'120x50'), public_questions_path, data: {"turbolinks" => false} %>
                   </li>
                   <li>
-                    <%= link_to "プラモデル一覧", public_items_path, class: "btn btn-outline-dark" %>
+                    <%= link_to image_tag("item.png", class:"image_switch", :size =>'120x50'), public_items_path, data: {"turbolinks" => false} %>
                   </li>
                   <li>
-                    <%= link_to "プラモデル一覧", public_items_path, class: "btn btn-outline-dark" %>
+                    <%= link_to image_tag("mypage.png", class:"image_switch",:size =>'120x50'), public_customers_path, data: {"turbolinks" => false} %>
                   </li>
                   <li>
-                    <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-outline-dark"%>
+                    <%= link_to image_tag("logout.png", class:"image_switch", :size =>'120x50'), destroy_customer_session_path, method: :delete, data: {"turbolinks" => false}%>
                   </li>
                 <% elsif admin_signed_in? %>
 
@@ -52,7 +51,7 @@
                     <%= link_to "新作カレンダー", public_calendars_path, class: "btn btn-outline-dark" %>
                   </li>
                   <li>
-                    <%= link_to "質問箱", public_questions_path, class: "btn btn-outline-dark" %>
+                    <%= link_to "会員一覧", admin_customers_path, class: "btn btn-outline-dark" %>
                   </li>
                   <li>
                     <%= link_to "プラモデル一覧", admin_items_path, class: "btn btn-outline-dark" %>
@@ -66,19 +65,19 @@
 
                 <% else %>
                   <li>
-                    <%= link_to "新作カレンダー", public_calendars_path, class: "btn btn-outline-dark" %>
+                    <%= link_to image_tag("calendar.png", class:"image_switch", :size =>'120x50'), public_calendars_path, data: {"turbolinks" => false}%>
                   </li>
                   <li>
-                    <%= link_to "質問箱", public_questions_path, class: "btn btn-outline-dark" %>
+                    <%= link_to image_tag("question.png", class:"image_switch", :size =>'120x50'), public_questions_path, data: {"turbolinks" => false} %>
                   </li>
                   <li>
-                    <%= link_to "プラモデル一覧", public_items_path, class: "btn btn-outline-dark" %>
+                    <%= link_to image_tag("item.png", class:"image_switch", :size =>'120x50'), public_items_path, data: {"turbolinks" => false} %>
                   </li>
                   <li>
-                    <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-dark" %>
+                    <%= link_to image_tag("Shin.png", class:"image_switch", :size =>'120x50'), new_customer_registration_path, data: {"turbolinks" => false} %>
                   </li>
                   <li>
-                    <%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-dark" %>
+                    <%= link_to image_tag("login.png", class:"image_switch", :size =>'120x50'), new_customer_session_path, data: {"turbolinks" => false} %>
                   </li>
 
               <% end %>

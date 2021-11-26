@@ -24,32 +24,32 @@
         <p>質問が更新されました。</p>
         <% end %>
 
-      <table>
+      <table class="mb-2">
 
         <tr>
-        <th class="p-3 mb-2 bg-light text-dark">質問</th>
+        <th class="p-3 mb-2 bg-light text-dark"><%= @customer %>さんからの質問</th>
         <th class="p-3 mb-2 bg-light text-dark" width="1000" ><%= @question.name %></th>
         </tr>
 
         <tr>
-        <td align="center">　内容：</td>
+        <td align="center">内容：</td>
         <td width="1000" ><%= @question.question %></td>
         </tr>
 
       </table>
 
-      <div><%= attachment_image_tag(@question.image, :image, :size => '300x210') %></div>
+      <div><%= attachment_image_tag(@question, :image, :size => '150x105') %></div>
 
-      <% if @question.id==current_customer %>
+      <% if @question.id == current_customer.id %>
       <div style="text-align: right"><%= link_to edit_public_question_path(@question.id),data: {"turbolinks" => false} do%>質問内容を編集する。<% end %></div>
       <% end %>
 
 
 
-      <div class="mt-4">
+      <div class="mt-4 mb-3">
 
       <% @answers.each do |answer| %>
-        <table>
+        <table class="mb-2">
 
 
           <tr>
@@ -64,17 +64,17 @@
 
         </table>
 
-        <div><%= attachment_image_tag(answer.image, :image, :size => '300x210') %></div>
+        <div><%= attachment_image_tag(answer, :image, :size => '150x105') %></div>
 
         <% if answer.customer_id == current_customer.id %>
-        <div style="text-align: right"><%= link_to edit_public_answer_path(answer.id),data: {"turbolinks" => false} do%>回答を編集する。<% end %></div>
+        <div style="text-align: right"><%= link_to edit_public_question_answer_path(@question.id, answer.id),data: {"turbolinks" => false} do%>回答を編集する。<% end %></div>
         <% end %>
       <% end %>
 
       <% if current_customer %>
       <div style="text-align: right">
-      <%= form_with url: new_public_answer_path, method: :GET, local:true do |f| %>
-        <%= f.hidden_field :question_id, :value => @question.id %>
+      <%= form_with url: new_public_question_answer_path(@question), method: :GET, local:true do |f| %>
+        <%#= f.hidden_field :question_id, :value => @question.id %>
         <%= f.submit '回答する', class: "btn btn-success" %>
       <% end %>
       </div>

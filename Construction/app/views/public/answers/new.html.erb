@@ -21,7 +21,7 @@
         <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 
           <table width="500" height="500">
-          <%= form_with model: @answer, url: public_answers_path, local: true do |f| %>
+          <%= form_with model: @answer, url: public_question_answers_path(@question), local: true do |f| %>
             <%= f.hidden_field :question_id, :value => @question.id %>
 
 
