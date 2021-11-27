@@ -2,11 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.main {
+.top {
   background-image: image-url("top.png");
-  background-repeat: no-repeat;
-  background-position: relative;
-   background-size: contain;                 /* 画像のサイズを指定    */
-   width: 100%;                              /* 横幅のサイズを指定    */
-   min-height: 70vh;                          /* 縦幅のサイズを指定    */
+  background-position: center;
+  background-size: cover;
+  width: 200px;
+  height: 100%;
 }
+
+.visual{
+      font-size: 20px;
+      font-weight: bold;
+      -webkit-text-stroke-width: 1.7px;
+      -webkit-text-stroke-color: darkorange;
+      -webkit-text-fill-color: white;
+      text-shadow: 4px 2px 0 gray;
+      }

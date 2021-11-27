@@ -47,6 +47,63 @@
             <th><%= f.text_area :comment, size: "45x10",placeholder: "（例）とても簡単に作れて、初心者にお勧めです。" %></th>
           </tr>
 
+
+          <tr>
+            <th>評価</th>
+
+            <th>
+              <div class="star-form-group" id="star1">               <%#id要素の付与がポイント%>
+              <%= f.label :make,'つくりやすさ', class:'star-title' %>　<%#保存したいカラムの指定%>
+              </div>
+
+            </th>
+          </tr>
+
+          <tr>
+            <th></th>
+
+            <th>
+              <div class="star-form-group" id="star2">               <%#id要素の付与がポイント%>
+              <%= f.label :appearance,'見栄え', class:'star-title' %>　<%#保存したいカラムの指定%>
+              </div>
+
+            </th>
+          </tr>
+
+          <tr>
+            <th></th>
+
+            <th>
+              <div class="star-form-group" id="star3">               <%#id要素の付与がポイント%>
+              <%= f.label :configuration,'設定重視', class:'star-title' %>　<%#保存したいカラムの指定%>
+              </div>
+
+            </th>
+          </tr>
+
+          <tr>
+            <th></th>
+
+            <th>
+              <div class="star-form-group" id="star4">               <%#id要素の付与がポイント%>
+              <%= f.label :precision,'精密さ', class:'star-title' %>　<%#保存したいカラムの指定%>
+              </div>
+
+            </th>
+          </tr>
+
+          <tr>
+            <th></th>
+
+            <th>
+              <div class="star-form-group" id="star5">               <%#id要素の付与がポイント%>
+              <%= f.label :price,'値段設定', class:'star-title' %>　<%#保存したいカラムの指定%>
+              </div>
+
+            </th>
+          </tr>
+
+
           <tr>
             <td>
             <%= f.submit '新規登録', class: "btn btn-success" %>
@@ -61,4 +118,54 @@
     </div>
 
   </div>
+
+   <script>
+    $('#star1').raty({
+    size     : 38,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'review[make]',
+    half: true,
+    });
+
+    $('#star2').raty({
+    size     : 38,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'review[appearance]',
+    half: true,
+    });
+
+    $('#star3').raty({
+    size     : 38,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'review[configuration]',
+    half: true,
+    });
+
+    $('#star4').raty({
+    size     : 38,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'review[precision]',
+    half: true,
+    });
+
+    $('#star5').raty({
+    size     : 38,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'review[price]',
+    half: true,
+    });
+  </script>
+
+
+
 </div>

@@ -40,7 +40,7 @@
 
       <div><%= attachment_image_tag(@question, :image, :size => '150x105') %></div>
 
-      <% if @question.id == current_customer.id %>
+      <% if (current_customer != nil )&&(@question.id == current_customer.id) %>
       <div style="text-align: right"><%= link_to edit_public_question_path(@question.id),data: {"turbolinks" => false} do%>質問内容を編集する。<% end %></div>
       <% end %>
 
@@ -66,7 +66,7 @@
 
         <div><%= attachment_image_tag(answer, :image, :size => '150x105') %></div>
 
-        <% if answer.customer_id == current_customer.id %>
+        <% if (current_customer != nil )&&(answer.customer_id == current_customer.id) %>
         <div style="text-align: right"><%= link_to edit_public_question_answer_path(@question.id, answer.id),data: {"turbolinks" => false} do%>回答を編集する。<% end %></div>
         <% end %>
       <% end %>
