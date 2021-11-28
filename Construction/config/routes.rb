@@ -22,7 +22,7 @@ root to: 'public/homes#top'
     # /adminログイン後遷移先
 
     # ItemsController関連
-    resources :items
+    resources :items, onry: [:index, :new, :create, :show, :edit, :update, :destroy]
     # /ItemsController関連
 
     # GenresController関連
