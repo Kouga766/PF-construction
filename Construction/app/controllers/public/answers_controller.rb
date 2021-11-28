@@ -16,12 +16,12 @@ class Public::AnswersController < ApplicationController
       # バリデーションエラーが無い、且つレビューを一度もしたことない場合
       if answer_count < 1
         @answer.save
-        redirect_to public_question_path(@question), notice: "レビューを保存しました"
+        redirect_to public_question_path(@question), notice: "回答を保存しました"
       else
-        redirect_to public_question_path(@question), notice: "レビューの投稿は一度までです"
+        redirect_to public_question_path(@question), notice: "回答の投稿は一度までです"
       end
     else
-      flash.now[:alert] = "レビューの保存に失敗しました"
+      flash.now[:alert] = "回答の保存に失敗しました"
       render :new
     end
   end
