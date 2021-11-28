@@ -18,12 +18,4 @@ class Public::ItemsController < ApplicationController
     @reviews = @item.reviews
   end
 
-  def new
-  end
-
-  def edit
-  end
-
-
-
 end

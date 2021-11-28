@@ -11,11 +11,14 @@
 // about supported directives.
 //
 
-//= require jquery3
+//= require jquery
 //= require popper
 //= require bootstrap-sprockets
 
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require jquery_ujs
+//= require jquery.raty.js
 //= require_tree .
+

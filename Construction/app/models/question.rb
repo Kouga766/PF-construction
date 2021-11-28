@@ -8,7 +8,7 @@ class Question < ApplicationRecord
   attachment :image
 
   #　アソシエーション
-  # belongs_to :customer
+  belongs_to :customer, optional: true
   has_many :answers, dependent: :destroy
   #　アソシエーション
 

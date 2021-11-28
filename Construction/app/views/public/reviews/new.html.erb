@@ -20,9 +20,11 @@
 
         <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 
+
+        <%= form_with model: @review, url: public_item_reviews_path(@item), local: true do |f| %>
+          <%= f.hidden_field :item_id, :value => @item.id %>
           <table width="500" height="500">
-          <%= form_with model: @review, url: public_item_reviews_path(@item), local: true do |f| %>
-            <%= f.hidden_field :item_id, :value => @item.id %>
+
 
 
           <tr>
@@ -49,55 +51,55 @@
 
 
           <tr>
-            <th>評価</th>
+            <th>つくりやすさ</th>
 
             <th>
               <div class="star-form-group" id="star1">               <%#id要素の付与がポイント%>
-              <%= f.label :make,'つくりやすさ', class:'star-title' %>　<%#保存したいカラムの指定%>
+
               </div>
 
             </th>
           </tr>
 
           <tr>
-            <th></th>
+            <th>見栄え</th>
 
             <th>
               <div class="star-form-group" id="star2">               <%#id要素の付与がポイント%>
-              <%= f.label :appearance,'見栄え', class:'star-title' %>　<%#保存したいカラムの指定%>
+
               </div>
 
             </th>
           </tr>
 
           <tr>
-            <th></th>
+            <th>設定重視</th>
 
             <th>
               <div class="star-form-group" id="star3">               <%#id要素の付与がポイント%>
-              <%= f.label :configuration,'設定重視', class:'star-title' %>　<%#保存したいカラムの指定%>
+
               </div>
 
             </th>
           </tr>
 
           <tr>
-            <th></th>
+            <th>精密さ</th>
 
             <th>
               <div class="star-form-group" id="star4">               <%#id要素の付与がポイント%>
-              <%= f.label :precision,'精密さ', class:'star-title' %>　<%#保存したいカラムの指定%>
+
               </div>
 
             </th>
           </tr>
 
           <tr>
-            <th></th>
+            <th>値段設定</th>
 
             <th>
               <div class="star-form-group" id="star5">               <%#id要素の付与がポイント%>
-              <%= f.label :price,'値段設定', class:'star-title' %>　<%#保存したいカラムの指定%>
+
               </div>
 
             </th>
@@ -107,12 +109,12 @@
           <tr>
             <td>
             <%= f.submit '新規登録', class: "btn btn-success" %>
-            <% end %>
+
             </td>
           </tr>
 
           </table>
-
+          <% end %>
         </div>
       </div>
     </div>

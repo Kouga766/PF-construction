@@ -48,10 +48,13 @@
           </tr>
 
           <tr>
-            <td>
+            <th>
             <%= f.submit '回答を変更', class: "btn btn-success" %>
             <% end %>
-            </td>
+            </th>
+            <th>
+            <%= link_to '削除する',public_question_answer_path(id:@answer.id,item_id:@question.id),method: :DELETE, data: {confirm:"本当に削除しますか？"}, class: "btn btn-danger" %>
+            </th>
           </tr>
 
           </table>

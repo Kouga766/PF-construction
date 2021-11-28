@@ -50,7 +50,7 @@ class Public::AnswersController < ApplicationController
   def destroy
     @answer = Answer.find(params[:id])
     @answer.destroy
-    redirect_to public_question_path
+    redirect_to public_questions_path
   end
 
 private

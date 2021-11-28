@@ -26,7 +26,7 @@ class Public::QuestionsController < ApplicationController
 
   def create
 
-    @question = Question.new(question_params)
+    @question = current_customer.questions.new(question_params)
     #デフォルトで画像を設定
     @question.image = "default.png"
 
@@ -61,7 +61,7 @@ class Public::QuestionsController < ApplicationController
   def destroy
     @question = Question.find(params[:id])
     @question.destroy
-    redirect_to public_question_path
+    redirect_to public_questions_path
   end
 
 private

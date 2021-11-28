@@ -50,13 +50,13 @@ class Public::ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to public_item_path
+    redirect_to public_items_path
   end
 
 private
   # ストロングパラメータ
   def review_params
-   params.require(:review).permit(:name, :comment ,:image )
+   params.require(:review).permit(:name, :comment ,:image, :make, :appearance, :configuration, :precision, :price)
 
   end
 
