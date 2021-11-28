@@ -3,7 +3,8 @@ class CreateReviews < ActiveRecord::Migration[5.2]
     create_table :reviews do |t|
 
       #FK
-       t.references :customer, foreign_key: true
+      # デプロイの際にcustomerの後に入れないとエラーが出たため、customerより後に追記
+      # t.references :customer, foreign_key: true
        t.references :item, foreign_key: true
       #FK
 

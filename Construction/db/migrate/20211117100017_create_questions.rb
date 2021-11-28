@@ -3,7 +3,8 @@ class CreateQuestions < ActiveRecord::Migration[5.2]
     create_table :questions do |t|
 
       #FK
-       t.references :customer, foreign_key: true
+      # デプロイの際にcustomerの後に入れないとエラーが出たため、customerより後に追記
+      # t.references :customer, foreign_key: true
       #FK
 
       #追加カラム

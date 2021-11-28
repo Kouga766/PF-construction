@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_18_160706) do
+ActiveRecord::Schema.define(version: 2021_11_28_111152) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email"
@@ -26,13 +26,13 @@ ActiveRecord::Schema.define(version: 2021_11_18_160706) do
   end
 
   create_table "answers", force: :cascade do |t|
-    t.integer "customer_id"
     t.integer "question_id"
     t.string "name", null: false
     t.string "image_id"
     t.string "answer", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "customer_id"
     t.index ["customer_id"], name: "index_answers_on_customer_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
@@ -96,18 +96,17 @@ ActiveRecord::Schema.define(version: 2021_11_18_160706) do
   end
 
   create_table "questions", force: :cascade do |t|
-    t.integer "customer_id"
     t.string "name", null: false
     t.string "image_id"
     t.string "question", null: false
     t.boolean "is_Q", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "customer_id"
     t.index ["customer_id"], name: "index_questions_on_customer_id"
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer "customer_id"
     t.integer "item_id"
     t.string "name", null: false
     t.string "image_id"
@@ -119,6 +118,7 @@ ActiveRecord::Schema.define(version: 2021_11_18_160706) do
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "customer_id"
     t.index ["customer_id"], name: "index_reviews_on_customer_id"
     t.index ["item_id"], name: "index_reviews_on_item_id"
   end
