@@ -10,9 +10,9 @@
         <%= form_with model: @item, url: admin_items_path, local:true do |f| %>
           <%= f.hidden_field :is_active %>
           <% if @item.is_active == "リアル系" %>
-          <%= attachment_image_tag(@item.image, :image, :size => '250x180', fallback: "default2.png") %>
+          <%= attachment_image_tag(@item, :image, :size => '250x180', fallback: "default2.png") %>
           <%else%>
-          <%= attachment_image_tag(@item.image, :image, :size => '250x180', fallback: "default.png") %>
+          <%= attachment_image_tag(@item, :image, :size => '250x180', fallback: "default.png") %>
           <%end%>
         <%end%>
       </tr>
