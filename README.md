@@ -25,11 +25,13 @@
 プラモデルの評価がどうなってるか見たい時
 
 ## 設計書
-##テーブル定義書
+テーブル定義書
 https://docs.google.com/spreadsheets/d/1fwfpoqoT2neoRgPCXtVo8V8wwBI6bH9ZAXWTk1rFS1c/edit#gid=856357510
-##ER図
+
+ER図
 https://app.diagrams.net/#G1FI2bKxGK_I5Af7-x8gw9AOo3-Ce74Qzu
-##ワイヤーフレーム
+
+ワイヤーフレーム
 https://app.diagrams.net/#G11CYJpEFrI9yx3_b5w4qQQ2W-f5C9Vq58 （ユーザー)
 https://app.diagrams.net/#G1CJAHdj4VWgAr_-8NeCJRXac8YSWF05Gr （管理者）
 
