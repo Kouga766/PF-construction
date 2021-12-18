@@ -1,4 +1,4 @@
-![site-logo](https://github.com/Kouga766/Construction-Ver.2/blob/main/app/assets/images/Rogo.png)
+![site-logo](https://github.com/Kouga766/PF-construction/blob/develop/Construction/app/assets/images/Rogo.png)
 # プラモデル情報サイト-コンストラクション-
 
 ## サイト概要
@@ -41,5 +41,3 @@
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
-
-## 使用素材未定
