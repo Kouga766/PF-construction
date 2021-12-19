@@ -37,7 +37,7 @@ https://app.diagrams.net/#G1CJAHdj4VWgAr_-8NeCJRXac8YSWF05Gr （管理者）
 <https://docs.google.com/spreadsheets/d/1OklrUJ1AJnxoFzjlkvwtv-FwexEXLZi4f4CccPykKI0/edit#gid=186999329>
 
 ## 開発環境
-- OS：windws10
+- OS：windows10
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
