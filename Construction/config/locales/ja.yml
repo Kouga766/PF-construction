@@ -1,0 +1,98 @@
+# サンプルコード
+# 全ファイル共通の使いまわす可能性のあるワードは dictionary を起点にする。
+ja:
+  dictionary:
+    messages:
+      # 呼び出し方
+      # ■ 階層を.でつなげた文字列を渡す
+      # 　　I18n.t("dictionary.messages.hello_user", user_name: "ヤマダ")で呼び出す
+      # ■ scopeで階層を区切り(文字列でも配列でも可能)、対象のkeyを渡す
+      # 　　I18n.t(:hello_user, scope: "dictionary.messages", user_name: "ヤマダ")
+      # 　　I18n.t(:hello_user, scope: [:dictionary, :messages], user_name: "ヤマダ")
+      hello_user: 'こんにちは%{user_name}さん'
+    words:
+      user: &user 'ユーザ情報'          # &user はエイリアスで *user で参照できる。(同一ファイル内のみ有効)
+      user_copy: *user                # 'ユーザ情報' となる。
+
+# サンプルコード
+# ヘルパー関数はhelpersを起点にする。
+# ヘルパー関数内で tメソッドを使用すると、呼び出し元のビューに基づいたパスが呼び出される。
+# 例えばusersのshowから呼ばれたヘルパー関数内で t('.hoge') を実行した場合 users.show.hoge が参照される。
+# 呼び出し元によって文言を変えたい場合はビュー側に記述する。(そんなことあるかわからないけど。)
+
+ja:
+  helpers:
+    submit:
+      create: "%{model}を登録する"
+      update: "%{model}を更新する"
+      account:
+        create: "保存する"
+      login_form:
+        create: "ログインする"
+    select:
+      prompt: "選択してください。"
+    links:
+      show: "詳細"
+      back: "戻る"
+      destroy: "削除"
+      edit: "編集"
+      new: "新規作成"
+      cancel: "キャンセル"
+
+# サンプルコード
+# グローバルな感じのエラーはerrorsを起点にする。
+ja:
+  errors:
+    format: "%{message}"
+    messages: &errors_messages
+      inclusion: "%{attribute}が正しくありません。"
+      exclusion: "%{attribute}は正しくありません。"
+      invalid: "%{attribute}が正しくありません。"
+      confirmation: "%{attribute}が一致しません。"
+      accepted: "%{attribute}をチェックしてください。"
+      empty: "%{attribute}を入力してください。"
+      blank: "%{attribute}を入力してください。"
+      required: "%{attribute}を入力してください。"
+      too_long: "%{attribute}は%{count}文字以内で入力してください。"
+      too_short: "%{attribute}は%{count}文字以上で入力してください。"
+      wrong_length: "%{attribute}は%{count}文字で入力してください。"
+      not_a_number: "%{attribute}は数値で入力してください。"
+      not_an_integer: "%{attribute}は整数で入力してください。"
+      greater_than: "%{attribute}は%{count}より大きい値を入力してください。"
+      greater_than_or_equal_to: "%{attribute}は%{count}以上の値を入力してください。"
+      equal_to: "%{attribute}は%{count}にしてください"
+      less_than: "%{attribute}は%{count}より小さい値にしてください"
+      less_than_or_equal_to: "%{attribute}は%{count}以下の値にしてください"
+      odd: "%{attribute}は奇数を入力してください。"
+      even: "%{attribute}は偶数を入力してください。"
+      taken: "%{attribute}がすでに使用されています。"
+      before: "%{attribute}は%{threshold}よりも前の%{type}を入力してください。"
+      before_or_equal_to: "%{attribute}は%{threshold}以前の%{type}を入力してください。"
+      after: "%{attribute}は%{threshold}よりも後の%{type}を入力してください。"
+      after_or_equal_to: "%{attribute}は%{threshold}以降の%{type}を入力してください。"
+      out_of_contract: "%{attribute}が契約期間外です。"
+      file_size_exceed: "%{file_name}のファイルサイズが大きすぎます。"
+      file_type_invalid: "アップロードできないファイル形式です。"
+      file_name_too_long: "ファイル名が長すぎます、%{count}文字以内の名称のファイルを指定してください。"
+      access_forbidden: "指定された情報にアクセスする権限がありません。"
+      pixel_size_too_large: "画像ファイルの大きさは %{width} × %{height} ピクセル以内にしてください。"
+      invalid_chars: "%{attribute}に使用できない文字が含まれています（%{chars}）。"
+      in_between: "の容量は%{min}以上%{max}以下にしてください。"
+      spoofed_media_type: "%{attribute}の拡張子と内容が一致していません。"
+
+# サンプルコード
+# flashのi18nの設定方法
+
+ja:
+  flash:
+    new: 作成しました！
+    updated: 更新しました！
+    failed: 失敗しました！
+    destroy: 削除しました！
+    login: ログインしました！
+    logout: ログアウトしました！
+    limited_access: 不正な侵入です！！
+    tag_follow: タグをフォローしました！
+    tag_not_follow: タグをフォローできませんでした。
+    tag_remove_follow: タグのフォローを解除しました！
+

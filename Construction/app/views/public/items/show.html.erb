@@ -1,0 +1,205 @@
+<div class="mb-2 ">
+    <center>
+      <b>
+      <%= form_with model: @item, url: admin_items_path, local:true do |f| %>
+        <%= f.hidden_field :is_active %>
+        <% if @item.is_active == "リアル系" %>
+        <font size="5" color="green"><%= @item.is_active %></font>
+        <%else%>
+        <font size="5" color="blue"><%= @item.is_active %></font>
+        <%end%>
+      <%end%>
+      </b>
+    </center>
+  </div>
+
+<div class='container px-5 px-sm-0'>
+
+  <div class='row'>
+
+
+
+
+    <div class='col-md-4 mt-4'>
+
+      <tr>
+          <%= form_with model: @item, url: admin_items_path, local:true do |f| %>
+          <%= f.hidden_field :is_active %>
+          <% if @item.is_active == "リアル系" %>
+          <%= attachment_image_tag(@item, :image, :size => '300x210', fallback: "default2.png") %>
+          <%else%>
+          <%= attachment_image_tag(@item, :image, :size => '300x210', fallback: "default.png") %>
+          <%end%>
+        <%end%>
+      </tr>
+
+    </div>
+
+
+
+    <div class='col-md-6 offset-md-1'>
+
+      <% if flash[:createdflag] == true then %>
+      <p>You have created item successfully.</p>
+      <% end %>
+
+
+
+          <%= form_with model: @item, url: public_items_path, method: :post, local:true do |f| %>
+          <%= f.hidden_field :item_id, :value => params[:id] %>
+           <table width="700" height="100">
+            <tr>
+              <th><big><big>『<%= @item.name %>』</big></big></th>
+            </tr>
+           </table>
+
+           <table width="700" height="300">
+
+                  <tr>
+                    <th><big><big>￥<%= @item.price.round.to_s(:delimited) %></big></big></th>
+                  </tr>
+
+              <tr>
+                <td width="17%">プラモデル説明</td>
+                <td><%= @item.description %></td>
+              </tr>
+
+              <tr>
+                <td>ジャンル</td>
+                <td type="button" class="btn btn-warning">
+
+                <%= @item.genre.name if @item.genre.present? %>
+                </td>
+              </tr>
+
+              <tr>
+                <td>スケール</td>
+                <td>1/<%= @item.scale%>スケール
+                </td>
+              </tr>
+
+
+              <tr>
+                <td noWrap>参考価格</td>
+                <td noWrap><%= @item.price.to_s(:delimited)%>円
+                </td>
+              </tr>
+
+              <tr>
+                <td>発売日</td>
+                <td><%= @item.sample_at %>
+                </td>
+              </tr>
+
+                <%end%>
+              </table>
+
+
+    </div>
+  </div>
+</div>
+
+<div class='container px-5 px-sm-0'>
+
+  <div class='row'>
+
+    <div class='col-md-4 mt-2'>
+    <h3>カスタマーレビュー</h3>
+    <p>平均評価</p>
+    <tr class='mt-4'>
+          <canvas id="myChart"></canvas>
+          <script>
+            var ctx = document.getElementById("myChart");
+            var myChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+            labels: ["つくりやすさ", "見栄え", "設定重視", "精密さ", "値段設定"],
+            datasets:
+            [
+            <% @makesum=@reviews.sum(:make) %> // カラムのデータの合計値
+            <% @makecount=@reviews.count(:make) %>  //　カラムのデータ個数
+
+            <% @appearancsum=@reviews.sum(:appearance) %>// カラムのデータの合計値
+            <% @appearanccount=@reviews.count(:appearance) %> //　カラムのデータ個数
+
+            <% @configurationsum=@reviews.sum(:configuration) %>// カラムのデータの合計値
+            <% @configurationcount=@reviews.count(:configuration) %> //　カラムのデータ個数
+
+            <% @precisiosum=@reviews.sum(:precision) %>// カラムのデータの合計値
+            <% @precisiocount=@reviews.count(:precision) %> //　カラムのデータ個数
+
+            <% @pricesum=@reviews.sum(:price) %>// カラムのデータの合計値
+            <% @pricecount=@reviews.count(:price) %> //　カラムのデータ個数
+            {
+            label: '<%= @item.name %>へのユーザー評価',
+            backgroundColor: 'rgba(122,255,129,0.2)',
+            borderColor: '#008000',
+            data: [<%= @makesum.to_f/@makecount %>, <%= @appearancsum.to_f/@appearanccount %>, <%= @configurationsum.to_f/@configurationcount %>, <%= @precisiosum.to_f/@precisiocount %>, <%= @pricesum.to_f/@pricecount %>]
+            },
+            ]
+            },
+            options: {
+            scale: {
+            ticks: {
+            suggestedMin: 0,
+            suggestedMax: 5
+            }
+            }
+            }
+            });
+          </script>
+        </tr>
+
+    </div>
+
+
+
+    <div class="mt-4">
+      <p>
+      <% @reviews.each do |review| %>
+      <table>
+
+
+      <tr>
+      <th width="17%" class="p-3 mb-2 bg-light text-dark"><%= review.customer.name %>さんのレビュー</th>
+      <th class="p-3 mb-2 bg-light text-dark"><%= review.name %></th>
+      </tr>
+
+      <tr>
+      <td align="center">　内容：</td>
+      <td><%= review.comment %></td>
+      </tr>
+
+      <tr>
+      <td align="center"></td>
+      <td width="1000" ><%= attachment_image_tag(review, :image, :size => '300x210') %></td>
+      </tr>
+
+      </table>
+
+
+
+        <% if (current_customer != nil )&&(review.customer_id == current_customer.id) %>
+          <div style="text-align: right">
+            <%= link_to edit_public_item_review_path(id:review.id,item_id:@item.id),data: {"turbolinks" => false}, class: "btn btn-success" do%>編集する<% end %>
+
+          </div>
+        <% end %>
+      <% end %>
+
+      <% if current_customer %>
+      <div style="text-align: right" class="mt-4">
+      <%= form_with url: new_public_item_review_path(@item), method: :GET, local:true do |f| %>
+      <%#= f.hidden_field :item_id, :value => @item.id %>
+      <%= f.submit 'レビューする', class: "btn btn-success" %>
+      <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+  </div>
+</div>

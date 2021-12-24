@@ -1,0 +1,76 @@
+<div class='container'>
+  <div class='row'>
+    <font color="red">
+      <% if @question.errors.any? %>
+      <%= @question.errors.count %>error prohibited this obj from being saved:
+      <% @question.errors.full_messages.each do |message| %>
+      <%= message %>
+      <% end %>
+      <% end %>
+    </font>
+
+
+    <div class='container'>
+      <div class='row'>
+
+        <div class='container px-3 px-sm-3'>
+          <h4 style="background-color: #d3d3d3; display:inline;">～質問～</h4>
+        </div>
+
+        <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+
+          <table width="500" height="500">
+          <%= form_with model: @question, url: public_question_path, local:true do |f| %>
+
+
+
+          <tr>
+            <th>質問画像</th>
+
+            <th><%= f.attachment_field :image, class: "form-control-file question_image" %></th>
+          </tr>
+
+
+
+          <tr>
+            <th>質問タイトル</th>
+
+            <th><%= f.text_field :name, size: "40x20",placeholder: "（例）墨入れのやり方を教えてください。" %></th>
+          </tr>
+
+
+
+          <tr>
+            <th>内容</th>
+
+            <th><%= f.text_area :question, size: "45x10",placeholder: "（例）凹凸をはっきりさせたくて墨入れをしたいのですが、やり方を教えてください。" %></th>
+          </tr>
+
+          <tr>
+            <th>ジャンル</th>
+          　<th>
+              <%= f.radio_button :is_Q, :技術系, checked: "checked" %>
+              <%= f.label :技術系, class: "is_Q_label" %>
+              <%= f.radio_button :is_Q, :その他 %>
+              <%= f.label :その他, class: "is_Q_label" %>
+            </th>
+          </tr>
+
+          <tr>
+            <th>
+            <%= f.submit '質問を更新する', class: "btn btn-success" %>
+            <% end %>
+            </th>
+            <th>
+            <%= link_to '削除する',public_question_path,method: :DELETE, data: {confirm:"本当に削除しますか？"}, class: "btn btn-danger" %>
+            </th>
+          </tr>
+
+          </table>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

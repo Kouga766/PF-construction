@@ -1,0 +1,173 @@
+<div class='container'>
+  <div class='row'>
+    <font color="red">
+      <% if @review.errors.any? %>
+      <%= @review.errors.count %>error prohibited this obj from being saved:
+      <% @review.errors.full_messages.each do |message| %>
+      <%= message %>
+      <% end %>
+      <% end %>
+    </font>
+
+
+
+    <div class='container'>
+      <div class='row'>
+
+        <div class='container px-3 px-sm-3'>
+          <h4 style="background-color: #d3d3d3; display:inline;">～レビュー～</h4>
+        </div>
+
+        <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+
+
+        <%= form_with model: @review, url: public_item_reviews_path(@item), local: true do |f| %>
+          <%= f.hidden_field :item_id, :value => @item.id %>
+          <table width="500" height="500">
+
+
+
+          <tr>
+            <th>レビュー画像</th>
+
+            <th><%= f.attachment_field :image, class: "form-control-file review_image" %></th>
+          </tr>
+
+
+
+          <tr>
+            <th>レビュータイトル</th>
+
+            <th><%= f.text_field :name, size: "40x20",placeholder: "（例）つくりやすい！" %></th>
+          </tr>
+
+
+
+          <tr>
+            <th>内容</th>
+
+            <th><%= f.text_area :comment, size: "45x10",placeholder: "（例）とても簡単に作れて、初心者にお勧めです。" %></th>
+          </tr>
+
+
+          <tr>
+            <th>つくりやすさ</th>
+
+            <th>
+              <div class="star-form-group" id="star1">               <%#id要素の付与がポイント%>
+
+              </div>
+
+            </th>
+          </tr>
+
+          <tr>
+            <th>見栄え</th>
+
+            <th>
+              <div class="star-form-group" id="star2">               <%#id要素の付与がポイント%>
+
+              </div>
+
+            </th>
+          </tr>
+
+          <tr>
+            <th>設定重視</th>
+
+            <th>
+              <div class="star-form-group" id="star3">               <%#id要素の付与がポイント%>
+
+              </div>
+
+            </th>
+          </tr>
+
+          <tr>
+            <th>精密さ</th>
+
+            <th>
+              <div class="star-form-group" id="star4">               <%#id要素の付与がポイント%>
+
+              </div>
+
+            </th>
+          </tr>
+
+          <tr>
+            <th>値段設定</th>
+
+            <th>
+              <div class="star-form-group" id="star5">               <%#id要素の付与がポイント%>
+
+              </div>
+
+            </th>
+          </tr>
+
+
+          <tr>
+            <td>
+            <%= f.submit '新規登録', class: "btn btn-success" %>
+
+            </td>
+          </tr>
+
+          </table>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+   <script>
+    $('#star1').raty({
+    size     : 38,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'review[make]',
+    half: true,
+    });
+
+    $('#star2').raty({
+    size     : 38,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'review[appearance]',
+    half: true,
+    });
+
+    $('#star3').raty({
+    size     : 38,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'review[configuration]',
+    half: true,
+    });
+
+    $('#star4').raty({
+    size     : 38,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'review[precision]',
+    half: true,
+    });
+
+    $('#star5').raty({
+    size     : 38,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'review[price]',
+    half: true,
+    });
+  </script>
+
+
+
+</div>

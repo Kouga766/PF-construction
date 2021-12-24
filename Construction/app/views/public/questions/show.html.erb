@@ -1,0 +1,89 @@
+<div class="mb-2 ">
+    <center>
+      <b>
+      <%= form_with model: @question, url: public_questions_path, local:true do |f| %>
+        <%= f.hidden_field :is_Q %>
+        <% if @question.is_Q == "技術系" %>
+        <font size="5" color="green"><%= @question.is_Q %></font>
+        <%else%>
+        <font size="5" color="blue"><%= @question.is_Q %></font>
+        <%end%>
+      <%end%>
+      </b>
+    </center>
+  </div>
+
+
+<div class='container px-5 px-sm-0'>
+
+  <div class='row'>
+
+    <div>
+
+        <% if flash[:createdflag] == true then %>
+        <p>質問が更新されました。</p>
+        <% end %>
+
+      <table class="mb-2">
+
+        <tr>
+        <th class="p-3 mb-2 bg-light text-dark" width="17%"><%= @question.customer.name %>さんからの質問</th>
+        <th class="p-3 mb-2 bg-light text-dark" ><%= @question.name %></th>
+        </tr>
+
+        <tr>
+        <td align="center">内容：</td>
+        <td width="1000" ><%= @question.question %></td>
+        </tr>
+
+      </table>
+
+      <div><%= attachment_image_tag(@question, :image, :size => '150x105') %></div>
+
+      <% if (current_customer != nil )&&(@question.customer.id == current_customer.id) %>
+      <div style="text-align: right"><%= link_to edit_public_question_path(@question.id),data: {"turbolinks" => false} do%>質問内容を編集する。<% end %></div>
+      <% end %>
+
+
+
+      <div class="mt-4 mb-3">
+
+      <% @answers.each do |answer| %>
+        <table class="mb-2">
+
+
+          <tr>
+          <th class="p-3 mb-2 bg-light text-dark" width="17%"><%= answer.customer.name%>さんの回答</th>
+          <th class="p-3 mb-2 bg-light text-dark" ><%= answer.name %></th>
+          </tr>
+
+          <tr>
+          <td align="center">　内容：</td>
+          <td width="1000" ><%= answer.answer %></td>
+          </tr>
+
+        </table>
+
+        <div><%= attachment_image_tag(answer, :image, :size => '150x105') %></div>
+
+        <% if (current_customer != nil )&&(answer.customer_id == current_customer.id) %>
+        <div style="text-align: right"><%= link_to edit_public_question_answer_path(@question.id, answer.id),data: {"turbolinks" => false} do%>回答を編集する。<% end %></div>
+        <% end %>
+      <% end %>
+
+      <% if current_customer %>
+      <div style="text-align: right" class="mt-4">
+      <%= form_with url: new_public_question_answer_path(@question), method: :GET, local:true do |f| %>
+        <%#= f.hidden_field :question_id, :value => @question.id %>
+        <%= f.submit '回答する', class: "btn btn-success" %>
+      <% end %>
+      </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

@@ -1,0 +1,103 @@
+<div class='container'>
+  <div class='row'>
+    <font color="red">
+      <% if @item.errors.any? %>
+      <%= @item.errors.count %>error prohibited this obj from being saved:
+      <% @item.errors.full_messages.each do |message| %>
+      <%= message %>
+      <% end %>
+      <% end %>
+    </font>
+
+
+    <div class='container'>
+      <div class='row'>
+
+        <div class='container px-3 px-sm-3'>
+          <h4 style="background-color: #d3d3d3; display:inline;"> 登録内容変更　</h4>
+        </div>
+
+        <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+
+          <table width="500" height="500">
+          <%= form_with model: @item, url: admin_item_path(@item.id), local:true do |f| %>
+
+
+
+          <tr>
+            <th>プラモデル画像</th>
+
+            <th><%= f.attachment_field :image %></th>
+          </tr>
+
+
+
+          <tr>
+            <th>プラモデル名</th>
+
+            <th><%= f.text_field :name, placeholder: "商品名" %></th>
+          </tr>
+
+
+
+          <tr>
+            <th>プラモデル説明</th>
+
+            <th><%= f.text_area :description %></th>
+          </tr>
+
+          <tr>
+            <th>系統</th>
+          　<th>
+              <%= f.radio_button :is_active, :リアル系, checked: "checked" %>
+              <%= f.label :リアル系, class: "is_active_label" %>
+              <%= f.radio_button :is_active, :アニメ・ゲーム系 %>
+              <%= f.label :アニメ・ゲーム系, class: "is_active_label" %>
+            </th>
+          </tr>
+
+          <tr>
+            <th>ジャンル</th>
+
+            <th><%= f.collection_select :genre_id, @genre, :id, :name, {include_blank: "--選択してください--"}%></th>
+          </tr>
+
+          <tr>
+            <th>スケール</th>
+
+            <th>1/<%= f.text_field :scale, placeholder: "60" %>スケール</th>
+          </tr>
+
+          <tr>
+            <th>参考価格</th>
+
+            <th><%= f.text_field :price, placeholder: "1000" %>円</th>
+          </tr>
+
+          <tr>
+            <th>販売日</th>
+
+            <th><%= f.date_field :sample_at %></th>
+          </tr>
+
+
+
+
+
+
+
+          <tr>
+            <td>
+            <%= f.submit '変更を保存', class: "btn btn-success" %>
+            <% end %>
+            </td>
+          </tr>
+
+          </table>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

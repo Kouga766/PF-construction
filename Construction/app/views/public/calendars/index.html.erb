@@ -1,0 +1,33 @@
+<style>
+.table {
+  table-layout: fixed;
+}
+</style>
+
+<p id="notice"><%= notice %></p>
+
+<div class='container'>
+  <h3>新着カレンダー</h3>
+  <div>
+
+
+
+    <table style="width:120px;">
+      <%= month_calendar events: @calendars do |date, calendars| %>
+        <%= date.day %>
+
+
+        <% @item.each do |item| %>
+          <% if item.sample_at==date %>
+            <div>
+              <font size="2">
+               ・<%= link_to item.name,public_item_path(item.id) %>
+              </font>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </table>
+
+  </div>
+</div>

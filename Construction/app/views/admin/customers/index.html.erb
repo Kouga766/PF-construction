@@ -1,0 +1,64 @@
+<p id="notice"></p>
+
+
+
+  <div class='container px-3 px-sm-3'>
+
+        <div>
+          <div class="container">
+            <div class="row">
+
+              <div class="col-sm-3">
+                <h4 style="background-color: #d3d3d3; display:inline;">　会員一覧　</h4>
+
+              </div>
+              <div class="col-sm-6">
+
+              </div>
+              <div class="col-sm-3">
+
+              </div>
+            </div>
+          </div>
+
+
+
+          <br></br>
+          <!--↑　隙間明け-->
+
+              <table class="table">
+
+                <tr>
+                  <th class="p-3 mb-2 bg-light text-dark">会員ID</th>
+                  <th class="p-3 mb-2 bg-light text-dark">ユーザー名</th>
+                  <th class="p-3 mb-2 bg-light text-dark">メールアドレス</th>
+                  <th class="p-3 mb-2 bg-light text-dark">ステータス</th>
+                </tr>
+
+                <% @customers.each do |customer| %>
+                  <tr>
+                  <td><%= customer.id %></td>
+                  <td><%= link_to admin_customer_path(customer.id) do%><%= customer.name %><% end %></td>
+                  <td><%= customer.email%></td>
+                  <td>
+                    <% if customer.is_deleted == "退会" %>
+                     <div class="text-secondary">
+                      <%= customer.is_deleted %>
+                     </div>
+                    <% else %>
+                     <div class="text-success">
+                      <%= customer.is_deleted %>
+                     </div>
+                    <% end %>
+                  </td>
+                  </tr>
+                <%end%>
+              </table>
+
+              <div class="col-md-8 offset-md-1">
+                <br><%= paginate @customers %></br>
+              </div>
+
+        </div>
+    </div>
+  </div>

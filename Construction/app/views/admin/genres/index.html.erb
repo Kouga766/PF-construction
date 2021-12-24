@@ -1,0 +1,43 @@
+<div class='container px-3 px-sm-3'>
+  <font color="red">
+    <% if @genre.errors.any? %>
+      <%= @genre.errors.count %>error prohibited this obj from being saved:
+        <% @genre.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
+    <% end %>
+
+  </font>
+</div>
+
+
+<div class='container px-3 px-sm-3 '>
+  <div class='row'>
+    <div>
+
+      <div class="container mb-4">
+        <h4 style="background-color: #d3d3d3; display:inline; mb-4">　ジャンル一覧・追加　</h4>
+      </div>
+
+      <%= form_with model:@genre, url: "/admin/genres", local:true do |f| %>
+        <div class="container mb-4">ジャンル名
+          <span style="margin-left:50px"><%= f.text_field :name,placeholder: "ジャンル名"%></span>
+          <span style="margin-left:50px"><%= f.submit '　新規登録　', class: "btn btn-success" %></span>
+        </div>
+      <% end %>
+
+      <table class="table">
+        <div class="p-3 mb-2 bg-light text-dark" >　　　　ジャンル　</div>
+        <tbody>
+          <% @genres.each do |genre| %>
+            <tr>
+              <td><%= genre.name %></td>
+              <td><%= link_to "編集する", edit_admin_genre_path(genre), data: {"turbolinks" => false}, class: "btn btn-sm btn-success" %></td>
+            </tr>
+          <%end%>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

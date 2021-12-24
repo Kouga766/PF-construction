@@ -1,0 +1,66 @@
+ <div class='container px-3 px-sm-3'>
+
+
+        <div>
+          <div class="container">
+            <div class="row">
+
+              <div class="col-sm-3">
+                <h4 style="background-color: #d3d3d3; display:inline;">　商品一覧　</h4>
+
+              </div>
+              <div class="col-sm-6">
+
+              </div>
+              <div class="col-sm-3">
+
+                <%= link_to new_admin_item_path, data: {"turbolinks" => false} do %><i class="fa fa-plus-circle",  style="font-size:30px"></i><%end%>
+
+              </div>
+            </div>
+          </div>
+
+
+
+          <br></br>
+          <!--↑　隙間明け-->
+
+              <table class="table">
+
+                <tr>
+                  <th class="p-3 mb-2 bg-light text-dark">系統</th>
+                  <th class="p-3 mb-2 bg-light text-dark">ジャンル</th>
+                  <th class="p-3 mb-2 bg-light text-dark">商品名</th>
+                  <th class="p-3 mb-2 bg-light text-dark">税抜価格</th>
+                   <th class="p-3 mb-2 bg-light text-dark">発売日</th>
+                </tr>
+
+                <% @items.each do |item| %>
+                  <tr>
+
+                  <td><% if item.is_active == "リアル系" %>
+                    <div class="text-success"><%= item.is_active %></div>
+                    <%else%>
+                    <div class="text-primary"><%= item.is_active %></div>
+                    <%end%>
+                  </td>
+
+                  <td><%= item.genre.name if item.genre.present? %></td>
+
+                  <td><%= link_to admin_item_path(item.id) do%><%= item.name %><% end %></td>
+                  <td><%= item.price.to_s(:delimited)%></td>
+                  <td><%= item.sample_at %></td>
+
+
+
+                  </tr>
+                <%end%>
+              </table>
+
+              <div class="col-md-8 offset-md-1">
+                <br><%= paginate @items %></br>
+              </div>
+
+        </div>
+    </div>
+  </div>
