@@ -1,0 +1,38 @@
+<div class='container px-5 px-sm-0'>
+
+
+  <div class="mb-4 ">
+    <center>
+      <b><font size="5" color="blue">その他</font>
+      <font size="5">質問一覧</font></b>
+      <font size="3">(全<%=@questions.count %>件)</font>
+    </center>
+  </div>
+
+    <div class="row">
+
+      <table class="table">
+
+      <tr>
+      <th class="p-3 mb-2 bg-light text-dark">質問</th>
+      <th class="p-3 mb-2 bg-light text-dark">回答数</th>
+      <th class="p-3 mb-2 bg-light text-dark">質問日</th>
+      </tr>
+
+      <% @questions.each do |question| %>
+      <tr>
+
+
+      <td><%= link_to public_question_path(question.id) do%><%= question.name %><% end %></td>
+      <td><%= question.answers.count %></td>
+      <td><%= question.created_at.strftime('%Y/%m/%d') %></td>
+
+
+
+      </tr>
+      <%end%>
+      </table>
+
+    </div>
+</div>
+

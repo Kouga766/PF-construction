@@ -1,0 +1,108 @@
+<!--<div class='main container mx-auto px-5 px-sm-0'>-->
+
+<!--  <div class='row'>-->
+
+
+
+<body>
+  <div class="container top">
+    <div class="row">
+      <div class='col-md-5 mt-4'>
+
+        <tr>
+          <p class="visual" align=center>
+            ようこそ！
+          </p>
+          <p class="visual"  align=center>
+            プラモデル情報サイト-コンストラクション‐へ！
+          </p>
+          <p class="visual" align=center>
+            このサイトでは、プラモデルの新着情報から
+          </p>
+          <p class="visual" align=center>
+            技術交換ができる質問箱など
+          </p>
+          <p class="visual" align=center>
+            盛りだくさんなサイトです！
+          </p>
+        </tr>
+        <tr>
+          <%= link_to image_tag("Rogo.png", class:"image_switch", :size =>'450x220'), root_path, data: {"turbolinks" => false}%>
+        </tr>
+      </div>
+
+
+
+      <div class='col-md-7 d-flex'>
+        <ul class="navbar-nav mx-auto justify-content-center">
+        <% if customer_signed_in? %>
+        <li>
+          <%= link_to image_tag("calendar.png", class:"image_switch", :size =>'325x110'), public_calendars_path, data: {"turbolinks" => false}%>
+        </li>
+        <li>
+          <%= link_to image_tag("question.png", class:"image_switch", :size =>'325x110'), public_questions_path, data: {"turbolinks" => false} %>
+        </li>
+        <li>
+          <%= link_to image_tag("item.png", class:"image_switch", :size =>'325x110'), public_items_path, data: {"turbolinks" => false} %>
+        </li>
+        <li>
+          <%= link_to image_tag("Shop.png", class:"image_switch", :size =>'325x110'), public_about_path, data: {"turbolinks" => false}%>
+        </li>
+        <li>
+          <%= link_to image_tag("mypage.png", class:"image_switch",:size =>'325x110'), public_customers_path, data: {"turbolinks" => false} %>
+        </li>
+        <li>
+          <%= link_to image_tag("logout.png", class:"image_switch", :size =>'325x110'), destroy_customer_session_path, method: :delete, data: {"turbolinks" => false}%>
+        </li>
+      <% elsif admin_signed_in? %>
+
+        <li>
+          <%= link_to "新作カレンダー", public_calendars_path, class: "btn btn-outline-dark" %>
+        </li>
+        <li>
+          <%= link_to "会員一覧", admin_customers_path, class: "btn btn-outline-dark" %>
+        </li>
+        <li>
+          <%= link_to "プラモデル一覧", admin_items_path, class: "btn btn-outline-dark" %>
+        </li>
+        <li>
+          <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-outline-dark" %>
+        </li>
+        <li>
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-dark" %>
+        </li>
+
+      <% else %>
+        <li>
+          <%= link_to image_tag("calendar.png", class:"image_switch", :size =>'325x110'), public_calendars_path, data: {"turbolinks" => false}%>
+        </li>
+        <li>
+          <%= link_to image_tag("question.png", class:"image_switch", :size =>'325x110'), public_questions_path, data: {"turbolinks" => false} %>
+        </li>
+        <li>
+          <%= link_to image_tag("item.png", class:"image_switch", :size =>'325x110'), public_items_path, data: {"turbolinks" => false} %>
+        </li>
+        <li>
+          <%= link_to image_tag("Shop.png", class:"image_switch", :size =>'325x110'), public_about_path,  data: {"turbolinks" => false}%>
+        </li>
+        <li>
+          <%= link_to image_tag("Shin.png", class:"image_switch", :size =>'325x110'), new_customer_registration_path, data: {"turbolinks" => false} %>
+        </li>
+        <li>
+          <%= link_to image_tag("login.png", class:"image_switch", :size =>'325x110'), new_customer_session_path, data: {"turbolinks" => false} %>
+        </li>
+
+      <% end %>
+      </ul>
+      </div>
+  <!--  </div>-->
+  <!--</div>-->
+
+
+      <div class="background right">
+      <%= link_to new_admin_session_path, data: {"turbolinks" => false} do%>管理者メニュー<% end %>
+      </div>
+    </div>
+  </div>
+
+</body>

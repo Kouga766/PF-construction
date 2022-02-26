@@ -1,41 +1,24 @@
-# プラモデル情報サイト-コンストラクション-
+# README
 
-## サイト概要
-新作情報カレンダーによって、新しいプラモデルの情報を観覧できる。
-プラモデルの評価ができ、さらにほかのユーザーたちがつけた平均評価も見れる。
-プラモデルの質問箱により、ユーザー間で技術やプラモデルについての意見交換ができる。
-プラモデルをこれから始めようとする人や上級者が集まるサイト。
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-### サイトテーマ
-プラモデルの情報サイト
+Things you may want to cover:
 
-### テーマを選んだ理由
-初心者がプラモデルを始める際に素組み（設計図道理組み立てる）だけではなく、さらに技術を上げる手伝いができる。
-上級者などとの技術の交流ができる質問箱等からさらにステップアップできるようなサイトをつくることにより、
-プラモデルを通した新たなる交流の場ができ、プラモデルの世界が広がっていくのではないかという考えから。
+* Ruby version
 
-### ターゲットユーザ
-プラモデルを趣味とする人。
-これからプラモデル作成を始めようとしている人。
+* System dependencies
 
-### 主な利用シーン
-どのような技術があるか聞きたい時
-新作がどのようなものがあるか見たい時
-プラモデルの評価がどうなってるか見たい時
+* Configuration
 
-## 設計書
-テーブル定義書
-ER図
-ワイヤーフレーム
+* Database creation
 
-## チャレンジ要素一覧
-<https://docs.google.com/spreadsheets/d/1OklrUJ1AJnxoFzjlkvwtv-FwexEXLZi4f4CccPykKI0/edit#gid=186999329>
+* Database initialization
 
-## 開発環境
-- OS：windws10
-- 言語：HTML,CSS,JavaScript,Ruby,SQL
-- フレームワーク：Ruby on Rails
-- JSライブラリ：jQuery
-- IDE：Cloud9
+* How to run the test suite
 
-## 使用素材未定
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...

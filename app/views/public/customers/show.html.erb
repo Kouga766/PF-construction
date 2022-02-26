@@ -1,0 +1,32 @@
+    <div class='container px-3 px-sm-3'>
+    　<div class='row'>
+    　  <div>
+        <div class="container mb-4">
+          <h4 style="background-color: #d3d3d3; display:inline;">　マイページ　</h4>
+       </div>
+
+       <div class='mb-3' style='font-weight:bold;'>
+
+       <span style="margin-left:50px">登録情報　<%= link_to '　編集する　',edit_public_customers_path, data: {"turbolinks" => false}, class: "btn btn-success" %></span>
+
+       </div>
+
+          <div class='mb-3'>
+            <table border="1">
+              <tr>
+                <td class="p-3 mb-2 bg-light text-dark">ユーザー名</td>
+                <td><%= @customer.name%></td>
+              </tr>
+
+
+              <tr>
+                <td class="p-3 mb-2 bg-light text-dark">メールアドレス</td>
+                <td><%= @customer.email%></td>
+              </tr>
+
+            </table>
+         </div>
+
+        </div>
+      </div>
+    </div>

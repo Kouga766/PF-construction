@@ -1,0 +1,91 @@
+<div class='container'>
+  <div class='row'>
+
+    <div class='container-fluid px-3 px-sm-3 mb-4'>
+      <h4 style="background-color: #d3d3d3; display:inline;">　プラモデル詳細　</h4>
+    </div>
+
+    <div class='col-md-3'>
+      <tr>
+        <%= form_with model: @item, url: admin_items_path, local:true do |f| %>
+          <%= f.hidden_field :is_active %>
+          <% if @item.is_active == "リアル系" %>
+          <%= attachment_image_tag(@item, :image, :size => '250x180', fallback: "default2.png") %>
+          <%else%>
+          <%= attachment_image_tag(@item, :image, :size => '250x180', fallback: "default.png") %>
+          <%end%>
+        <%end%>
+      </tr>
+    </div>
+
+    <div class="col-md-6">
+
+      <table width="950" height="250">
+
+        <% if flash[:created] == true then %>
+        <p>[プラモデルが<font color="#2DFF57">登録</font>されました。]</p>
+        <% end %>
+
+        <% if flash[:createdflag] == true then %>
+        <p>[登録内容が<font color="#2DFF57">更新</font>されました。]</p>
+        <% end %>
+
+
+        <%= form_with model: @item, url: admin_items_path, local:true do |f| %>
+
+        <tr>
+          <td>プラモデル名</td>
+          <td><%= @item.name%></td>
+        </tr>
+
+        <tr>
+          <td>プラモデル説明</td>
+          <td><%= @item.description %></td>
+        </tr>
+
+        <tr>
+          <td>系統（ジャンル）</td>
+          <td>
+          <%= f.hidden_field :is_active %>
+          <% if @item.is_active == "リアル系" %>
+          <a class="btn btn-sm btn-success "><%= @item.is_active %></a>
+          <%else%>
+          <a class="btn btn-sm btn-primary "><%= @item.is_active %></a>
+          <%end%>
+
+          （<%= @item.genre.name if @item.genre.present? %>）
+          </td>
+        </tr>
+
+        <tr>
+          <td>スケール</td>
+          <td>1/<%= @item.scale%>スケール
+          </td>
+        </tr>
+
+
+        <tr>
+          <td noWrap>参考価格</td>
+          <td noWrap><%= @item.price.to_s(:delimited)%>円
+          </td>
+        </tr>
+
+        <tr>
+          <td>発売日</td>
+          <td><%= @item.sample_at %>
+          </td>
+        </tr>
+
+        <%end%>
+      </table>
+
+      <td>
+        <%= link_to "　編集する　", edit_admin_item_path(@item.id), data: {"turbolinks" => false}, class: "btn btn-sm btn-success" %>
+        <%= link_to '削除する', admin_item_path(@item), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_item_#{@item.id}"%>
+      </td>
+
+    </div>
+
+  </div>
+
+</div>

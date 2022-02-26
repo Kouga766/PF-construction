@@ -1,0 +1,40 @@
+<div class='container px-5 px-sm-0 '>
+
+
+  <div class="mb-4 centering_parent ">
+    <center>
+      <b><font size="5">質問箱</font></b>
+      <br>
+      <b><font size="4">過去の質問はこちら↓</font></b>
+    </center>
+  </div>
+
+    <center>
+
+      <td><%= link_to "技術系", public_public_questions_technology_path, class: "btn btn-success w-50 h-70 mt-2" %></td>
+      <td><%= link_to "その他", public_public_questions_other_path, class: "btn btn-primary w-50 h-70 mt-2" %></td>
+    </center>
+  </h1></div>
+</div>
+
+<div class='container px-5 px-sm-0 '>
+
+
+  <div class="mb-4 centering_parent mt-4">
+    <center>
+      <b><font size="5">質問する！</font></b>
+    </center>
+  </div>
+
+
+    <center>
+      <% if current_customer %>
+        <td><%= link_to "ここをクリック！", new_public_question_path, data: {"turbolinks" => false}, class: "btn btn-primary" %></td>
+      <% else %>
+        <td><%= link_to "まずは会員登録！", new_customer_registration_path, data: {"turbolinks" => false}, class: "btn btn-primary" %></td>
+      <% end %>
+    </center>
+
+
+  </h1></div>
+</div>

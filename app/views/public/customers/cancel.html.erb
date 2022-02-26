@@ -1,0 +1,30 @@
+<div class='container px-5 px-sm-0'>
+
+  <br>
+  <h2 style="background-color: #d3d3d3; display:inline;">本当に退会しますか❔</h2>
+  </br>
+
+  <br> </br>
+
+    <div class='row'>
+      <div class='col-md-3'>
+      </div>
+
+      <div class='col-md-8 offset-md-1'>
+    <th>
+      退会すると、会員登録情報や</br>
+      これまでの質問履歴などが閲覧できなくなります。</br>
+      退会する場合は、「退会する」をクリックしてください。</br>
+    </th>
+    </br>
+     <th>
+       <%= link_to '退会しない', public_customers_path,class: "btn btn-success" %>
+			 <%= link_to '退会する',public_customer_withdraw_path,method: :Patch, data: {confirm:"本当に退会しますか？"},class: "btn btn-danger" %>
+     </th>
+
+
+
+  <div class="actions">
+    <% link_to "ログイン",class: "btn btn-primary" %>
+  </div>
+
